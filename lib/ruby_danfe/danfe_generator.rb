@@ -261,7 +261,7 @@ module RubyDanfe
 
       info_adicional += @xml['infAdic/infCpl']
 
-      if @xml.css('entrega').present?
+      if @xml.css('entrega').blank?
         info_adicional = build_additional_info(info_adicional)
       end
 
@@ -286,25 +286,25 @@ module RubyDanfe
     end
 
     def local_entrega_info
-      return unless @xml['entrega/xLgr'].present? || @xml['entrega/nro'].present?
+      return unless @xml['entrega/xLgr'].blank? || @xml['entrega/nro'].blank?
 
       "LOCAL DA ENTREGA: #{@xml['entrega/xLgr']} #{@xml['entrega/nro']}"
     end
 
     def bairro_info
-      return unless @xml['entrega/xBairro'].present?
+      return unless @xml['entrega/xBairro'].blank?
 
       "Bairro/Distrito: #{@xml['entrega/xBairro']}"
     end
 
     def municipio_info
-      return unless @xml['entrega/xMun'].present?
+      return unless @xml['entrega/xMun'].blank?
 
       "Municipio: #{@xml['entrega/xMun']}"
     end
 
     def uf_pais_info
-      return unless @xml['entrega/UF'].present?
+      return unless @xml['entrega/UF'].blank?
 
       "UF: #{@xml['entrega/UF']} País: Brasil"
     end
