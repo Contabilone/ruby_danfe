@@ -86,6 +86,14 @@ module RubyDanfe
       formated_cnpj
     end
 
+    def self.present?(value)
+      !blank?(value)
+    end
+
+    def self.blank?(value)
+      value.respond_to?(:empty?) ? !!value.empty? : !value
+    end
+
     private
 
     def self.extract_date_time(string)

@@ -1,4 +1,5 @@
 # coding: utf-8
+
 module RubyDanfe
   class DanfeGenerator
     def initialize(xml)
@@ -261,14 +262,8 @@ module RubyDanfe
 
       info_adicional += @xml['infAdic/infCpl']
 
-      if @xml.css('entrega')
-        info_adicional += " LOCAL DA ENTREGA: " +
-          @xml['entrega/xLgr'] + " " +
-          @xml['entrega/nro'] + " " +
-          "Bairro/Distrito: " + @xml['entrega/xBairro'] + " " +
-          "Municipio: " + @xml['entrega/xMun'] + " " +
-          "UF: " + @xml['entrega/UF'] + " " +
-          "País: Brasil"
+      if Helper.present?(@xml.css('entrega'))
+        info_adicional = build_additional_info(info_adicional)
       end
 
       if @xml['infAdic/infAdFisco'] != ""
@@ -279,6 +274,40 @@ module RubyDanfe
         @pdf.font_size 6
         @pdf.text info_adicional, align: :justify
       end
+    end
+
+    def build_additional_info(info_adicional)
+      [
+        info_adicional,
+        local_entrega_info,
+        bairro_info,
+        municipio_info,
+        uf_pais_info
+      ].compact.join(' ')
+    end
+
+    def local_entrega_info
+      return unless Helper.present?(@xml['entrega/xLgr']) || Helper.present?(@xml['entrega/nro'])
+
+      "LOCAL DA ENTREGA: #{@xml['entrega/xLgr']} #{@xml['entrega/nro']}"
+    end
+
+    def bairro_info
+      return unless Helper.present?(@xml['entrega/xBairro'])
+
+      "Bairro/Distrito: #{@xml['entrega/xBairro']}"
+    end
+
+    def municipio_info
+      return unless Helper.present?(@xml['entrega/xMun'])
+
+      "Municipio: #{@xml['entrega/xMun']}"
+    end
+
+    def uf_pais_info
+      return unless Helper.present?(@xml['entrega/UF'])
+
+      "UF: #{@xml['entrega/UF']} País: Brasil"
     end
 
     def render_produtos
