@@ -138,17 +138,30 @@ module RubyDanfe
     def render_calculo_do_imposto
       @pdf.ititle 0.42, 5.60, 0.25, 12.36, "CÁLCULO DO IMPOSTO"
 
-      @pdf.inumeric 0.85, 4.06, 0.25, 12.78, "BASE DE CÁLCULO DO ICMS", @xml['ICMSTot/vBC']
-      @pdf.inumeric 0.85, 4.06, 4.31, 12.78, "VALOR DO ICMS", @xml['ICMSTot/vICMS']
-      @pdf.inumeric 0.85, 4.06, 8.37, 12.78, "BASE DE CÁLCULO DO ICMS ST", @xml['ICMSTot/vBCST']
-      @pdf.inumeric 0.85, 4.06, 12.43, 12.78, "VALOR DO ICMS ST", @xml['ICMSTot/vST']
-      @pdf.inumeric 0.85, 4.32, 16.49, 12.78, "VALOR TOTAL DOS PRODUTOS", @xml['ICMSTot/vProd']
-      @pdf.inumeric 0.85, 3.46, 0.25, 13.63, "VALOR DO FRETE", @xml['ICMSTot/vFrete']
-      @pdf.inumeric 0.85, 3.46, 3.71, 13.63, "VALOR DO SEGURO", @xml['ICMSTot/vSeg']
-      @pdf.inumeric 0.85, 3.46, 7.17, 13.63, "DESCONTO", @xml['ICMSTot/vDesc']
-      @pdf.inumeric 0.85, 3.46, 10.63, 13.63, "OUTRAS DESPESAS ACESSORIAS", @xml['ICMSTot/vOutro']
-      @pdf.inumeric 0.85, 3.46, 14.09, 13.63, "VALOR DO IPI", @xml['ICMSTot/vIPI']
-      @pdf.inumeric 0.85, 3.27, 17.55, 13.63, "VALOR TOTAL DA NOTA", @xml['ICMSTot/vNF'], :style => :bold
+      @pdf.inumeric 0.85, 1.714,   0.25, 12.78, "BASE CÁLC. ICMS", @xml['ICMSTot/vBC']
+      @pdf.inumeric 0.85, 1.714,  1.964, 12.78, "VL. ICMS", @xml['ICMSTot/vICMS']
+      @pdf.inumeric 0.85, 1.714,  3.678, 12.78, "VL. ICMS DESONERADO", @xml['ICMSTot/vICMSDeson']
+      @pdf.inumeric 0.85, 1.714,  5.393, 12.78, "VL. ICMS FCP UF DEST.", @xml['ICMSTot/vFCPUFDest']
+      @pdf.inumeric 0.85, 1.714,  7.107, 12.78, "VL. ICMS UF DEST.", @xml['ICMSTot/vICMSUFDest']
+      @pdf.inumeric 0.85, 1.714,  8.821, 12.78, "VL. ICMS UF REMET.", @xml['ICMSTot/vICMSUFRemet']
+      @pdf.inumeric 0.85, 1.714, 10.535, 12.78, "VL. FCP", @xml['ICMSTot/vFCP']
+      @pdf.inumeric 0.85, 1.714, 12.249, 12.78, "BASE CÁLC. ICMS ST", @xml['ICMSTot/vBCST']
+      @pdf.inumeric 0.85, 1.714, 13.963, 12.78, "VL. DO ICMS ST", @xml['ICMSTot/vST']
+      @pdf.inumeric 0.85, 1.714, 15.678, 12.78, "VL. FCP RETIDO ST", @xml['ICMSTot/vFCPST']
+      @pdf.inumeric 0.85, 1.714, 17.392, 12.78, "VL. FCP RETIDO ANTERIORMENTE ST", @xml['ICMSTot/vFCPSTRet']
+      @pdf.inumeric 0.85, 1.714, 19.106, 12.78, "VL. PRODUTOS", @xml['ICMSTot/vProd']
+
+      @pdf.inumeric 0.85, 1.714,   0.25, 13.63, "VL. FRETE", @xml['ICMSTot/vFrete']
+      @pdf.inumeric 0.85, 1.714,  1.964, 13.63, "VL. SEGURO", @xml['ICMSTot/vSeg']
+      @pdf.inumeric 0.85, 1.714,  3.678, 13.63, "VL. DESCONTO", @xml['ICMSTot/vDesc']
+      @pdf.inumeric 0.85, 1.714,  5.393, 13.63, "VL. II", @xml['ICMSTot/vII']
+      @pdf.inumeric 0.85, 1.714,  7.107, 13.63, "VL. IPI", @xml['ICMSTot/vIPI']
+      @pdf.inumeric 0.85, 1.714,  8.821, 13.63, "VL. IPI DEVOLVIDO", @xml['ICMSTot/vIPIDevol']
+      @pdf.inumeric 0.85, 1.714, 10.535, 13.63, "VL. PIS", @xml['ICMSTot/vPIS']
+      @pdf.inumeric 0.85, 1.714, 12.249, 13.63, "VL. COFINS", @xml['ICMSTot/vCOFINS']
+      @pdf.inumeric 0.85, 1.714, 13.963, 13.63, "OUTRAS DESPESAS ACESSORIAS", @xml['ICMSTot/vOutro']
+      @pdf.inumeric 0.85, 2.571, 15.678, 13.63, "VL. DA NOTA", @xml['ICMSTot/vNF'], :style => :bold
+      @pdf.inumeric 0.85, 2.571, 18.249, 13.63, "VL. APROXIMADO TRIBUTOS", @xml['ICMSTot/vTotTrib'], :style => :bold
     end
 
     def render_transportadora_e_volumes
@@ -207,20 +220,21 @@ module RubyDanfe
 
       @pdf.ititle 0.42, 10.00, 0.25, base_y, "DADOS DO PRODUTO / SERVIÇO"
 
-      @pdf.ibox height, 2.00, 0.25, base_y + 0.42, "CÓDIGO"
-      @pdf.ibox height, 4.90, 2.25, base_y + 0.42, "DESCRIÇÃO"
-      @pdf.ibox height, 1.30, 7.15, base_y + 0.42, "NCM"
-      @pdf.ibox height, 0.80, 8.45, base_y + 0.42, "CST"
-      @pdf.ibox height, 1.00, 9.25, base_y + 0.42, "CFOP"
-      @pdf.ibox height, 1.00, 10.25, base_y + 0.42, "UNID"
-      @pdf.ibox height, 1.30, 11.25, base_y + 0.42, "QUANT"
-      @pdf.ibox height, 1.50, 12.55, base_y + 0.42, "VALOR UNIT"
-      @pdf.ibox height, 1.50, 14.05, base_y + 0.42, "VALOR TOT"
-      @pdf.ibox height, 1.50, 15.55, base_y + 0.42, "BASE CÁLC"
-      @pdf.ibox height, 1.00, 17.05, base_y + 0.42, "VL ICMS"
-      @pdf.ibox height, 1.00, 18.05, base_y + 0.42, "VL IPI"
-      @pdf.ibox height, 0.90, 19.05, base_y + 0.42, "% ICMS"
-      @pdf.ibox height, 0.86, 19.95, base_y + 0.42, "% IPI"
+      @pdf.ibox height, 2.00,  0.25, base_y + 0.42, "CÓDIGO"
+      @pdf.ibox height, 4.90,  2.25, base_y + 0.42, "DESCRIÇÃO"
+      @pdf.ibox height, 1.30,  7.15, base_y + 0.42, "NCM"
+      @pdf.ibox height, 0.70,  8.45, base_y + 0.42, "CST"
+      @pdf.ibox height, 0.70,  9.15, base_y + 0.42, "CFOP"
+      @pdf.ibox height, 0.70,  9.85, base_y + 0.42, "UNID."
+      @pdf.ibox height, 0.70, 10.55, base_y + 0.42, "QUANT."
+      @pdf.ibox height, 1.40, 11.25, base_y + 0.42, "VALOR UNIT."
+      @pdf.ibox height, 1.40, 12.65, base_y + 0.42, "VALOR TOT."
+      @pdf.ibox height, 1.40, 14.05, base_y + 0.42, "BASE CÁLC."
+      @pdf.ibox height, 1.00, 15.45, base_y + 0.42, "VL. ICMS"
+      @pdf.ibox height, 1.00, 16.45, base_y + 0.42, "VL. IPI"
+      @pdf.ibox height, 0.90, 17.45, base_y + 0.42, "% ICMS"
+      @pdf.ibox height, 0.86, 18.35, base_y + 0.42, "% IPI"
+      @pdf.ibox height, 1.60, 19.21, base_y + 0.42, "VL. APROX. TRIBUTOS"
     end
 
     def render_calculo_do_issqn
@@ -313,11 +327,10 @@ module RubyDanfe
     def render_produtos
       @pdf.font_size(6) do
         @produtos_box = @pdf.itable 6.37, 21.50, 0.25, 18.17,
-          @xml.collect('xmlns', 'det')  { |det|
+          @xml.collect('xmlns', 'det') { |det|
             [
               det.css('prod/cProd').text, #I02
               Descricao.generate(det), #I04
-              #{}" ",
               det.css('prod/NCM').text, #I05
               Cst.to_danfe(det), #N11
               det.css('prod/CFOP').text, #I08
@@ -329,29 +342,31 @@ module RubyDanfe
               Helper.numerify_default_zero(det.css('ICMS/*/vICMS').text), #N17
               Helper.numerify_default_zero(det.css('IPI/*/vIPI').text), #O14
               Helper.numerify_default_zero(det.css('ICMS/*/pICMS').text), #N16
-              Helper.numerify_default_zero(det.css('IPI/*/pIPI').text) #O13
+              Helper.numerify_default_zero(det.css('IPI/*/pIPI').text), #O13
+              Helper.numerify_default_zero(det.css('imposto/vTotTrib').text) #O13
             ]
           },
           :column_widths => {
-            0 => 2.00.cm,
-            1 => 4.90.cm,
-            2 => 1.30.cm,
-            3 => 0.80.cm,
-            4 => 1.00.cm,
-            5 => 1.00.cm,
-            6 => 1.30.cm,
-            7 => 1.50.cm,
-            8 => 1.50.cm,
-            9 => 1.50.cm,
+             0 => 2.00.cm,
+             1 => 4.90.cm,
+             2 => 1.30.cm,
+             3 => 0.70.cm,
+             4 => 0.70.cm,
+             5 => 0.70.cm,
+             6 => 0.70.cm,
+             7 => 1.40.cm,
+             8 => 1.40.cm,
+             9 => 1.40.cm,
             10 => 1.00.cm,
             11 => 1.00.cm,
             12 => 0.90.cm,
-            13 => 0.86.cm
+            13 => 0.86.cm,
+            14 => 1.60.cm
           },
           :cell_style => {:padding => 2, :border_width => 0} do |table|
-            table.column(6..13).style(:align => :right)
-            table.column(0..13).border_width = 1
-            table.column(0..13).borders = [:top]
+            table.column(6..14).style(:align => :right)
+            table.column(0..14).border_width = 1
+            table.column(0..14).borders = [:top]
             table.before_rendering_page do |page|
               if @pdf.page_number == 1
                 @pdf.bounds.instance_variable_set(:@y, (22.2).cm)
