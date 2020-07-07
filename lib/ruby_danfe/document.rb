@@ -58,7 +58,7 @@ module RubyDanfe
         :border => 1
       }.merge(options)
       self.stroke_rectangle at, w, h if options[:border] == 1
-      self.text_box title, :size => 6, :style => :italic, :at => [at[0] + 2, at[1] - 2], :width => w - 4, :height => 8 if title != ''
+      self.text_box title, :size => 4, :style => :italic, :at => [at[0] + 2, at[1] - 2], :width => w - 4, :height => 8 if title != ''
       self.text_box info, :size => options[:size], :at => [at[0] + 2, at[1] - (title != '' ? 14 : 4) ], :width => w - 4, :height => h - (title != '' ? 14 : 4), :align => options[:align], :style => options[:style], :valign => options[:valign]
     end
 
