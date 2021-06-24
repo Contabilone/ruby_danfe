@@ -285,7 +285,6 @@ module RubyDanfe
       end
 
       if @xml['infAdic/obsCont'] != "" && @xml.css('infAdic/obsCont').count <= 10
-        @xml.css('infAdic/obsCont').count
         @xml.css('infAdic/obsCont').each do |obs|
           info_adicional += "\n#{obs.attribute('xCampo').value}: #{(obs/'xTexto').text}"
         end
