@@ -209,11 +209,65 @@
          <infAdic>
           <infAdFisco>TesteFisco</infAdFisco>
           <infCpl>Obs:    PEDIDO DE COMPRA: 308.996   MATERIAL IMUNE CONFORME ART.150 INCISO VI ALINEA D DA CONSTITUICAO FEDERAL.</infCpl>
-          <obsCont xCampo="Teste">
+          <obsCont xCampo="Cont">
             <xTexto>Fisco sabe o que quer, mas nao sabe como pede</xTexto>
           </obsCont>
-          <obsFisco xCampo="Teste">
+          <obsCont xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsCont xCampo="Cont5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsCont>
+          <obsFisco xCampo="Fisco">
             <xTexto>Fisco sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Teste2">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
+          </obsFisco>
+          <obsFisco xCampo="Fisco5">
+            <xTexto>Fisco2 sabe o que quer, mas nao sabe como pede</xTexto>
           </obsFisco>
           <procRef>
             <nProc>12342414</nProc>
