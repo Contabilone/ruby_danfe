@@ -284,6 +284,18 @@ module RubyDanfe
         info_adicional += "\n#{@xml['infAdic/infAdFisco']}"
       end
 
+      if @xml['infAdic/obsCont'] != "" && @xml.css('infAdic/obsCont').count <= 10
+        @xml.css('infAdic/obsCont').each do |obs|
+          info_adicional += "\n#{obs.attribute('xCampo').value}: #{(obs/'xTexto').text}"
+        end
+      end
+
+      if @xml['infAdic/obsFisco'] != "" && @xml.css('infAdic/obsFisco').count <= 10
+        @xml.css('infAdic/obsFisco').each do |obs|
+          info_adicional += "\n#{obs.attribute('xCampo').value}: #{(obs/'xTexto').text}"
+        end
+      end
+
       @pdf.bounding_box [(0.33).cm, Helper.invert(26.78.cm)], height: 2.7.cm, width: 12.7.cm do
         @pdf.font_size 6
         @pdf.text info_adicional, align: :justify
